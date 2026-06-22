@@ -20,16 +20,35 @@
      * Przekazywanie danych i wyświetlanie ich wartości w DOM.
     * */
 
-    function Paragraph({text, emoji}) {
-      return <p title={text}> {emoji} </p>;
+
+
+    const App = () => { 
+      const house = '🏠';
+
+      return (
+        <main>
+          {/*<Paragraph hello="World" a={1} b="2" c={true}/>*/}
+          
+          <Paragraph text="Muchomor" emoji="🍄" />
+          <Paragraph text="Pytajnik" emoji="?" />
+          <Paragraph text="Test" emoji="💡" />
+          <Paragraph text="Dom" emoji={house} />
+        
+        </main>
+      )
     }
 
-    const App = () => (
-      <main>
-        <Paragraph text="Teatr" emoji="🎭" />
-        <Paragraph text="Muchomor" emoji="🍄" />
-      </main>
-    )
+    
+    function Paragraph({text, emoji}) {
+    // function Paragraph(props) {
+      console.log({text, emoji})
+      // console.log(props)
+      // const text = props.text;
+      // const emoji = props.emoji;
+      // const {text, emoji} = props;
+
+      return <p title={text}> {emoji} </p>;
+    }
 
     const root = createRoot(document.getElementById('root'));
     root.render(<App />);
