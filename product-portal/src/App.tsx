@@ -9,12 +9,12 @@ function App() {
 
   return (
     <div className="min-h-full">
-        <nav className="bg-indigo-400 p-2"> MenuBar </nav>
-        <main className="mx-auto max-w-5xl px-4 py-8">
-            <div> Strona... </div>
-        </main>
+      <nav className="bg-indigo-400 p-2"> MenuBar </nav>
+      <main className="mx-auto max-w-5xl px-4 py-8">
+        <div> Strona... </div>
+      </main>
     </div>
-  )
+  );
 
   // console.log - NIE W JSX!
   // return (
