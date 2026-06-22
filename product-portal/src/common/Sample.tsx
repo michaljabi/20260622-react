@@ -1,7 +1,16 @@
 export function Sample() {
+  const text = "Pierwszy!";
+
   return (
-    <div style={{ backgroundColor: "#285a20", color: "white", padding: "1em", fontSize: "20px" }}>
-      Pierwszy!
+    <div
+      style={{
+        backgroundColor: "#285a20",
+        color: "white",
+        padding: "1em",
+        fontSize: "20px",
+      }}
+    >
+      {text}
     </div>
   );
 }
