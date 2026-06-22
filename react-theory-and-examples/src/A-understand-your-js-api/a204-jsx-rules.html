@@ -28,17 +28,13 @@
        * Poznanie zasad używania składni JSX.
        * */
       // -> 1. słowo class jest niedozwolone
-      
-        const iCannotUseClassKeyword = (
-	        <div class="wrapper">
-		        <p class="box">
-			        This is a box!
-		        </p>
-		        <p>
-		            I Cannot Use "class" Keyword
-		        </p>
-	        </div>
-        )
+
+      const iCannotUseClassKeyword = (
+        <div class="wrapper">
+          <p class="box">This is a box!</p>
+          <p>I Cannot Use "class" Keyword</p>
+        </div>
+      );
 
       // -> 2. Blok kodu JSX może mieć tylko jeden element główny (top'owy / root'owy)
 
@@ -65,13 +61,20 @@
 
       // -> 4. Nazwy komponentów muszą być wielką literą (PascalCase)!
       function CamelCaseWontWork() {
-        return <div> What is wrong with me? </div>;
+        // mamy user:
+        const user = { name: "Michał", isAdmin: true };
+
+        return <div> What is wrong with me? {JSON.stringify(user)} </div>;
       }
 
       // -> 5. Standardowe komentarze HTML nie zadziałają:
       const elementWithCommentedBlockOfCode = (
         <div>
-          <div> Hello xyz! </div>
+          <div> Hello xyz! { [1,8, 'hello',90] } </div>
+
+          <div> {
+            [ <code>1</code>, <div>32</div> ]
+          } </div>
           {/* This is a way to do it (usuń wykrzyknik :) ->) */}
         </div>
       );
@@ -87,6 +90,7 @@
           {styleAttributeNeedToBeAnJSObject}
           {iNeedToHaveOneRootElement}
           {iCannotUseClassKeyword}
+          {elementWithCommentedBlockOfCode}
         </>,
       );
     </script>
