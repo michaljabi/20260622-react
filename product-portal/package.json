@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "echo:namez": "echo Michał",
+    "genuid": "nanoid -s 5"
   },
   "dependencies": {
     "react": "^19.2.6",
