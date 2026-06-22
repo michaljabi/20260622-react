@@ -11,12 +11,12 @@ function App() {
   return (
     <>
       {/* <div style="background-color: red"> tak się nie da w JSX */}
-      <div > 
+      <div>
         <Sample />
         {/* <SampleAlias /> */}
-        <span>Hello</span>
+        <span id={"myelement_" + 1}>Hello</span>
         {dynamicJSX}
-        {<span>Hello</span>}
+        {<span id={"myelement_" + 2}>Hello</span>}
       </div>
       {/* <img src={heroImg} /> */}
     </>
