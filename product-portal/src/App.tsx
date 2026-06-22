@@ -1,4 +1,6 @@
 // import heroImg from "./assets/hero.png";
+import { Sample } from "./common/Sample.tsx";
+import { Sample as SampleAlias } from "./common/Sample.tsx";
 
 function App() {
   console.log(3 + 90 + 2 * 4);
@@ -7,10 +9,8 @@ function App() {
   return (
     <>
       <h1>
-        Hello world {3 + 90 + 2 * 4} ?
-        <span>
-          $ <span> {"hello" + "world"} </span>
-        </span>
+        <Sample />
+        <SampleAlias />
       </h1>
       {/* <img src={heroImg} /> */}
     </>
