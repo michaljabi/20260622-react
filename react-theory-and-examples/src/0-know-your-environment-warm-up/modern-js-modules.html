@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern JS Modules</title>
+</head>
+<body>
+    <script src="./module.js" type="module"></script>
+    <script>
+        // Potwierdzenie, że nie mamy dostępu do zdefiniowanej wartości w module.js.
+        // Ponieważ stosujemy zapis type="module".
+        console.log(privateVariable)
+    </script>
+    <script type="module">
+        import { publicVariable } from './moduleB.js';
+        // Potwierdzenie, że tutaj mamy dostęp:
+		console.log('That will work:', publicVariable)
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> JSX to Simplify things </title>
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+    <style>
+        .helloWrapper {
+            text-align: center;
+        }
+        .box {
+            padding: 15px;
+            border: 3px solid darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React from "https://esm.sh/react@19";
+        import { createRoot } from "https://esm.sh/react-dom@19/client";
+
+        /**
+         * Sprawdź i porównaj z przykładami, które robiliśmy wcześniej
+         * Zauważ ilość nakładu i pisania w tych podejściach.
+         *
+         * Cel:
+         * Zrozumienie jak działa składnia JSX (JavaScript XML) i po co jest potrzebna.
+         * Jaka stała motywacja za tym, żeby ją utworzyć.
+         * Porównanie JSX a HTML
+         *
+         * https://reactjs.org/docs/introducing-jsx.html
+         * */
+	    function HelloReactComponent () {
+	    	return (
+                <div className="helloWrapper">
+                    <h2>Hello World 2</h2>
+                    <p className="box">
+                        Welcome to my example
+                    </p>
+                </div>
+            )
+        }
+
+        const evaluateTheJavaScriptElement = <span> 2 + 2 = { 2 + 2 } </span>
+
+        const root = createRoot(document.getElementById('root'));
+		root.render(
+           <>
+		        <HelloReactComponent />
+                { evaluateTheJavaScriptElement }
+           </>
+        );
+
+    </script>
+</body>
+</html>

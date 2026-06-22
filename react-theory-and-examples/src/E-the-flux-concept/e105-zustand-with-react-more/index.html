@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zustand Demo - user list - more buisness level approach</title>
+
+    <!-- 
+        Ten trick (<script type="importmap">) sprawia że importy są "ESM like" poniżej 
+     -->
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19",
+          "react-dom/client": "https://esm.sh/react-dom@19/client",
+          "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime"
+        }
+      }
+    </script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone@8.0.2/babel.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel" data-type="module">
+      // Upraszczamy importy wraz z `importmap`
+      import React from "react";
+      import { createRoot } from "react-dom/client";
+      import { useUsersStore, selectUsers } from "./useUsers.store.js";
+
+      const { useState } = React;
+
+      function UserList() {
+        const store = useUsersStore();
+        const users = selectUsers(store);
+
+        return (
+          <ul>
+            {users.map((user) => (
+              <UserListItem
+                {...user}
+                onRemove={(uuid) => store.removeUser(uuid)}
+              />
+            ))}
+          </ul>
+        );
+      }
+
+      function UserListItem({ uuid, name, email, onRemove }) {
+        return (
+          <li>
+            {name} - {email}{" "}
+            <button onClick={() => onRemove?.(uuid)}>❌</button>
+          </li>
+        );
+      }
+
+      function InputUser() {
+        const userStore = useUsersStore();
+        const [data, setData] = useState({
+          name: "",
+          email: "",
+        });
+
+        const handleInput = (field) => (ev) => {
+          const value = ev.target.value.trim();
+          setData((fD) => ({ ...fD, [field]: value }));
+        };
+
+        const handleKeyUp = (ev) => {
+          if (ev.code !== "Enter") {
+            return;
+          }
+          if (data.name && data.email) {
+            userStore.addUser(data.name, data.email);
+            setData({ name: "", email: "" });
+          }
+        };
+
+        return (
+          <>
+            <label>
+              Imię:{" "}
+              <input
+                onKeyUp={handleKeyUp}
+                value={data.name}
+                onInput={handleInput("name")}
+              />
+            </label>
+            <hr />
+            <label>
+              E-mail:{" "}
+              <input
+                onKeyUp={handleKeyUp}
+                value={data.email}
+                onInput={handleInput("email")}
+              />
+            </label>
+          </>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <UserList />
+            <InputUser />
+          </div>
+        );
+      }
+
+      const root = createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
+</html>

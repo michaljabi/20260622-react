@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> The private State of the component </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+	/**
+     * Sprawdź działanie przykładu w przeglądarce (live server).
+     *
+	 * Cel:
+	 * Wprowadzenie pojęcia stanu, jako sposobu modyfikacji komponentu w jego wnętrzu.
+     * Zauważenie, iż stan jes tylko do odczytu i jest możliwy do wykorzystania i aktualizacji tylko w obrębie
+     * komponentu, który go deklaruje.
+     *
+     * Info:
+     * W nowoczesnych aplikacjach React (po wersji 16.8) nie używamy już w ogóle komponentów klasowych.
+     * Mechanizm useState() w komponentach funkcyjnych wystarczy nam do zarządzania stanem,
+     * a useContext() - do obsługi kontekstu. Co oznacza, że nie potrzebujemy React.Component!
+     *
+     * Warto znać komponenty klasowe w kontekście aplikacji legacy.
+	 * */
+
+    class App extends React.Component {
+
+    	state = {
+    		name: 'World'
+        }
+
+    	render() {
+    		// metoda render wywołana zostanie za każdym razem, gdy wywołamy: this.setState !!!
+    		return (
+    			<div>
+                    <h1>Hello {this.state.name}</h1>
+                    <button onClick={() => this.setState({name: 'Michał'})}> Change the Title</button>
+                </div>
+            )
+        }
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

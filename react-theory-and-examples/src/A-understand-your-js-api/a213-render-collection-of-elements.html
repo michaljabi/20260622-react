@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Render collection of elements </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+    /**
+     * Cel:
+     * Wykorzystanie programowania funkcyjnego do dynamicznego wyświetlania zawartości na stronie.
+     * Przećwiczenie przekazywania props do komponentu
+     * Objaśnienie potrzeby stosowania wartości key, i jakie wartości key są złym pomysłem
+     * */
+
+    const fruits = ['apple', 'banana', 'mango', 'cherry'];
+
+    function ListOfElements() {
+       return (
+         <div>
+             <span>{fruits}</span>
+	         <ul>
+               {
+                 fruits.map(fruit => <li key={fruit}> {fruit} </li>)
+               }
+	         </ul>
+	         { /* Porównaj z tym: */ }
+             <ul>
+	             {
+                   [ <li key="1"> This </li>, <li key="2"> is </li>, <li key="3"> It </li>  ]
+                 }
+             </ul>
+         </div>
+       )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<ListOfElements />);
+</script>
+</body>
+</html>

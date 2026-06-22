@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> JSX Class and style manipulation </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+    <style>
+        .text-red {
+            color: #b91c1c;
+        }
+        .text-blue {
+            color: #5151d3;
+        }
+    </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+	/**
+	 *
+     *
+     * https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+     * https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Using_dynamic_styling_information#setting_style_properties
+	 * */
+
+	function App() {
+	    const textRedClass = 'text-red';
+	    const textBlueClass = 'text-blue';
+
+        return (
+            <>
+                <p className="text-red" > Hello Red text </p>
+                <p className={textBlueClass} > Hello Blue text </p>
+                <p className={textRedClass} > Hello Red text again </p>
+                <p style={ {color: 'green'} } >Hello Green text</p>
+                <p style={ {color: 'green', fontSize: '2em' } } >Hello Big Green text</p>
+            </>
+        )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

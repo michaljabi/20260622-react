@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zustand more API</title>
+  </head>
+  <body>
+    <main id="root">
+      <ul data-orders></ul>
+      <p>Count: <code data-count>0</code></p>
+      <input data-in />
+      <button data-btn="add">add</button>
+      <button data-btn="clear">clear</button>
+    </main>
+
+    <script type="module">
+      // subscribeWithSelector - middleware dający subskrypcję "per kawałek stanu"
+      import { createStore } from "https://esm.sh/zustand/vanilla";
+      import { subscribeWithSelector } from "https://esm.sh/zustand/middleware";
+
+      const ordersStore = createStore(
+        subscribeWithSelector((set, get) => ({
+          items: ["cola"],
+          addNewOrder: (order) => set({ items: [...get().items, order] }),
+          clear: () => set({ items: [] }),
+        })),
+      );
+
+      // SELEKTORY:
+      const selectAllOrders = (ordersState) => ordersState.items;
+      const selectCount = (ordersState) => ordersState.items.length;
+
+      const $orders = document.querySelector("[data-orders]");
+      const $count = document.querySelector("[data-count]");
+
+      // Subskrypcja SELEKTYWNA - listener odpala się tylko gdy
+      // wynik selektora się zmieni (a nie przy każdej zmianie stanu).
+      ordersStore.subscribe(
+        selectAllOrders,
+        (items) => {
+          $orders.innerHTML = items.map((i) => `<li>${i}</li>`).join("");
+        },
+        { fireImmediately: true }, // chcemy natychmiast "ustawić UI"
+      );
+
+      ordersStore.subscribe(
+        selectCount,
+        (count) => {
+          $count.textContent = count;
+        },
+        { fireImmediately: true }, // chcemy natychmiast "ustawić UI"
+      );
+
+      // BINDINGS:
+      document
+        .querySelector("[data-btn='add']")
+        .addEventListener("click", () => {
+          const $input = document.querySelector("[data-in]");
+          const text = $input.value.trim();
+          if (!text) {
+            return;
+          }
+          ordersStore.getState().addNewOrder(text);
+          $input.value = "";
+        });
+      document
+        .querySelector("[data-btn='clear']")
+        .addEventListener("click", () => ordersStore.getState().clear());
+
+      // Seed kilku elementów na początku:
+      ordersStore.getState().addNewOrder("pizza");
+      ordersStore.getState().addNewOrder("pasta");
+    </script>
+  </body>
+</html>

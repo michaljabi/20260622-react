@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React is just a library</title>
+    <style>
+        .helloWrapper {
+            text-align: center;
+        }
+        .box {
+            padding: 15px;
+            border: 3px solid darkred;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script type="module">
+        import React from "https://esm.sh/react@19";
+        import { createRoot } from "https://esm.sh/react-dom@19/client";
+	    /*
+            Nasz wcześniejszy przykład:
+
+            <div class="helloWrapper">
+                <h2>Hello World 2</h2>
+                <p class="box">
+                    Welcome to my example
+                </p>
+            </div>
+
+            Jak zapisać go w React ?
+        */
+	    const h2 =  React.createElement('h2', null, 'Hello World 2');
+	    const p =  React.createElement('p', {className: 'box'}, ' Welcome to my example');
+	    const div =  React.createElement('div', {className: 'helloWrapper'}, h2, p);
+
+        const rootElement = createRoot(document.getElementById('app'));
+        rootElement.render(div);
+    </script>
+</body>
+</html>

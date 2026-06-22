@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> JSX Component Composition </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+	/**
+     * Zadanie:
+     * Uwaga: do przygotowywania komponentów korzystaj z funkcji.
+     *
+     *
+     * Przygotuj nowy komponent HelloWorld wyświetlający:
+     * <div>
+     *     <h2> Hello world </h2>
+     *     <strong> to mój pierwszy komponent </strong>
+     *     <p>  <p>
+     * </div>
+     *
+     * 1. Osadź go w komponencie App
+     * 2. Przygotuj kolejny komponent: Greetings
+     *
+     * niech wyświetla pozdrowienia w formacie:
+     * <span> Witaj 2-gi komponencie </span>
+     *
+     * 3. osadź go w komponencie HelloWorld pomiędzy tagiem: <p> </p>
+     *
+	 * Cel:
+	 * Kompozycja komponentów przy użyciu JSX
+	 * */
+
+	// Komponent funkcyjny w React
+	function App() {
+      return <div> </div>
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

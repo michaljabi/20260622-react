@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> What's an Element - what's a Component ?</title>
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+	/**
+     * Zadanie:
+     * 1. Osadź w kodzie App w <section> MyComponent, MyOtherComponent oraz element JSX: myElement
+     * 2. Zwróć uwagę na różnice — z czego ona wynika?
+     *
+	 * Cel:
+     * Zrozumienie, iż Elementy JSX to po prostu obiekty, które możemy renderować bezpośrednio w innym JSX za pomocą {},
+     * Natomiast żeby mówić o komponentach React'a — potrzebujemy funkcji lub klasy.
+     * Poznanie / przypomnienie zapisu arrow function (ES6+)
+	 * */
+
+	function MyComponent() {
+      return <p>Hello component !</p>
+  }
+
+  const MyOtherComponent = () => (<p>Hello other component !</p>)
+
+  const myElement = (<p>Hello element !</p>)
+
+	function App() {
+      return (
+        <main>
+          <h1>Playground</h1>
+          <section>
+            {/* Poniżej osadź komponenty oraz element JSX: */}
+          </section>
+        </main>
+      )
+  }
+
+  const root = createRoot(document.getElementById('root'));
+  root.render(<App />);
+</script>
+</body>
+</html>

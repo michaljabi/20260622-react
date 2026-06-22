@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Render props.children </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+
+    /**
+     * Cel:
+     * Sprawdzenie działania specjalnego props.children.
+     * Dzięki któremu możemy dynamicznie zawierać w komponencie przekazane do niego elementy JSX / komponenty
+     * */
+
+    function Sentences(props) {
+	    return (
+	    	<div>
+                <h2>Zdania:</h2>
+                { props.children }
+            </div>
+        )
+    }
+
+    function App() {
+    	return (
+    		<Sentences>
+                <div> To jest moje 1 zdanie </div>
+                <div> To jest moje 2 zdanie </div>
+                <div> To jest moje 3 zdanie </div>
+                <div> To jest moje 4 zdanie </div>
+            </Sentences>
+        )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> How to update input </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+
+	const { useState } = React;
+
+    function MiniForm() {
+
+        const [name, setName] = useState('Hero');
+
+	    return (
+	    	<div>
+                <h2>Greetings for: {name} </h2>
+                <label>
+                    Name: <input value={name} onInput={e => setName(e.target.value)} />
+                </label>
+            </div>
+        )
+    }
+
+    function App() {
+    	return (
+    		<>
+              <MiniForm />
+            </>
+        )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

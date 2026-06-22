@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> JSX Usage Rules </title>
+     <script type="module" src="https://esm.sh/tsx"></script>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React from "https://esm.sh/react@19";
+        import { createRoot } from "https://esm.sh/react-dom@19/client";
+        /**
+         * Zadanie:
+         * Odkomentuj przykład po przykładzie i popraw pisownie składni
+         *
+         * Cel:
+         * Poznanie zasad używania składni JSX.
+         * */
+        // -> 1. słowo class jest niedozwolone
+        /*
+        const iCannotUseClassKeyword = (
+	        <div class="wrapper">
+		        <p class="box">
+			        This is a box!
+		        </p>
+		        <p>
+		            I Cannot Use "class" Keyword
+		        </p>
+	        </div>
+        )
+        */
+
+        // -> 2. Blok kodu JSX może mieć tylko jeden element główny (top'owy / root'owy)
+	    /*
+	    const iNeedToHaveOneRootElement = (
+            <div className="helloWrapper">
+                <h2>Hello World 2</h2>
+                <p className="box">
+                    I Need To Have One Root Element
+                </p>
+            </div>
+            <div>
+                  Second element
+            </div>
+        )
+        */
+
+        // -> 3. Atrybut style musi być obiektem JavaScript
+        /*
+        const styleAttributeNeedToBeAnJSObject = (
+            <div>
+              <div> Info </div>
+              <p style="background-color: lightgreen"> Operation successful </p>
+            </div>
+        )
+        */
+
+        // -> 4. Nazwy komponentów muszą być wielką literą (PascalCase)!
+        function camelCaseWontWork() {
+        	return <div> What is wrong with me? </div>
+        }
+
+        // -> 5. Standardowe komentarze HTML nie zadziałają:
+        /*const elementWithCommentedBlockOfCode = (
+	        <div>
+		        <div> Hello xyz! </div>
+                <!-- this will not work -->
+                {/* This is a way to do it (usuń wykrzyknik :) ->) *!/}
+	        </div>
+        )*/
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(
+            <>
+	            <div> tutaj podmieniaj kod ! { 2 + 3} </div>
+            </>
+        );
+</script>
+</body>
+</html>

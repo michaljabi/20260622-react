@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>React is just a library</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+
+    <div id="app"></div>
+
+    <script>
+	    /**
+         *
+	     * Cel:
+	     * Poznanie React. Zrozumienie, że to tylko biblioteka od UI i renderowania.
+         * Jej główne zainteresowanie — to warstwa widoku.
+         * W tym układzie możemy ją dość łatwo "doczepić" do części / całości naszego projektu.
+	     *
+	     * */
+	    const h1 = React.createElement('h1', null, 'Hello, React!');
+	    const $app = document.getElementById('app');
+	    const rootElement = ReactDOM.createRoot($app);
+		rootElement.render(h1);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> That was too static - show me the PROPS! </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+    /**
+    * Cel:
+     * Level up!
+     * Zrozumienie podstawowego mechanizmu komunikacji w React.
+     * Przekazywanie danych i wyświetlanie ich wartości w DOM.
+    * */
+
+    function Paragraph({text, emoji}) {
+      return <p title={text}> {emoji} </p>;
+    }
+
+    const App = () => (
+      <main>
+        <Paragraph text="Teatr" emoji="🎭" />
+        <Paragraph text="Muchomor" emoji="🍄" />
+      </main>
+    )
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

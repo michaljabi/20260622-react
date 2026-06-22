@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Child to parent </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+
+	const { useState } = React;
+
+    function StatefulDayDisplay() {
+        const [day, setDay] = useState('Thursday');
+        const handleDayUpdate = (dayName) => setDay(dayName)
+
+	    return (
+	    	<div>
+                <h2>Today is: {day} </h2>
+                <MyButton text="Monday" onClickChange={handleDayUpdate} />
+                <MyButton text="Tuesday" onClickChange={handleDayUpdate} />
+                <MyButton text="Wednesday" onClickChange={handleDayUpdate} />
+            </div>
+        )
+    }
+
+    function MyButton({text, onClickChange}) {
+	    return <button onClick={() => onClickChange(`${text} :)`)} > {text} </button>
+    }
+
+    function App() {
+    	return (
+    		<>
+              <StatefulDayDisplay />
+            </>
+        )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>

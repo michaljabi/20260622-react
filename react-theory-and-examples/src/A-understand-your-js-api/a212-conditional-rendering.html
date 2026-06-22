@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Conditional Rendering </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+
+    /**
+     * Zadanie:
+     * 1. Dołóż button zmieniający wartość stanu isWeatherFine
+     * 2. Komponent HappySunnyFace ma się pojawiać (w miejscu poniżej) tylko jeśli pogoda jest dobra (isWeatherFine = true)
+     * 3. Sprawdź jakie typy proste może renderować w React
+     *
+     * Cel:
+     * Sprawdzenie jak w React renderować coś lub nie w zależności od warunku.
+     * Nie tylko pod względem typów prostych, ale również komponentów i elementów JSX.
+     * */
+
+    const HappySunnyFace = () => (<span> 😎 </span>)
+
+    const { useState } = React;
+
+    function Toggler() {
+
+	    const [isWeatherFine, setIsWeatherFine] = useState(true)
+
+	    return (
+		    <div>
+			    Pogoda jest { isWeatherFine ? 'Dobra' : 'Zła' }
+			    <div>
+				    {/* tutaj dodaj button */}
+			    </div>
+			    <div>
+				    {/* tutaj dodaj kod dla komponentu */}
+			    </div>
+		    </div>
+	    )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<Toggler />);
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Zustand initial</title>
+  </head>
+  <body>
+    <main id="root">
+      <button class="btn-decrease">-</button>
+      <code class="display" style="padding: 0 10px"> 1 </code>
+      <button class="btn-increase">+</button>
+    </main>
+
+    <script type="module">
+      // https://zustand-demo.pmnd.rs/
+
+      // https://zustand.docs.pmnd.rs/learn/getting-started/introduction
+
+      import { createStore } from "https://esm.sh/zustand/vanilla";
+
+      // STORE - stan + akcje trzymane razem (brak osobnego reducera/akcji)
+      const counterStore = createStore((set) => ({
+        value: 1,
+        increase: () => set((state) => ({ value: state.value + 1 })),
+        decrease: () => set((state) => ({ value: state.value - 1 })),
+      }));
+
+      // BINDINGS:
+      const $btnIncrease = document.querySelector(".btn-increase");
+      const $btnDecrease = document.querySelector(".btn-decrease");
+      const $display = document.querySelector(".display");
+
+      $btnIncrease.addEventListener("click", () =>
+        counterStore.getState().increase(),
+      );
+      $btnDecrease.addEventListener("click", () =>
+        counterStore.getState().decrease(),
+      );
+
+      counterStore.subscribe(() => {
+        $display.textContent = counterStore.getState().value;
+      });
+    </script>
+  </body>
+</html>

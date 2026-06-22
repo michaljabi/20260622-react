@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    // Do do theory (HTML + CSS + JS ReadEvalPintLoop)
+    "achil.vscode-javascript-repl",
+    "ritwickdey.LiveServer",
+    "wallabyjs.quokka-vscode",
+    // Wygląd VSC (pomoc wizualna)
+    "pkief.material-icon-theme",
+    "johnpapa.vscode-peacock",
+    // CSS:
+    "bradlc.vscode-tailwindcss",
+     // Pomocne snippety
+    "burkeholland.simple-react-snippets",
+    // Testowanie kodu i zapytań AJAX
+    "vitest.explorer",
+    "humao.rest-client",
+    // Dodatki do lint + formatowanie kodu, intellisence VSC
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "christian-kohler.npm-intellisense",
+    "formulahendry.auto-rename-tag"
+  ]
+}

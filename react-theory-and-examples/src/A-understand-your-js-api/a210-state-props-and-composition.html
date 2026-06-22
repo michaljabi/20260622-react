@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> State, props and composition </title>
+
+    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel" data-type="module">
+    import React from "https://esm.sh/react@19";
+    import { createRoot } from "https://esm.sh/react-dom@19/client";
+	/**
+     * Zadanie:
+     * 1. Osiągnij to samo zachowanie co w przykładzie poprzednim, wykorzystaj jednak komponent Greetings
+     *
+	 * Cel:
+     * Zrozumienie koncepcji aktualizacji stanu. Gdzie ponownie wywołana zostaje metoda render().
+     * Wszystkie komponenty, które są zwrócone w metodzie - będą miały zaktualizowane wartości props
+     * ponieważ stan zaktualizował się a metoda render, została wykonana ponownie.
+     *
+	 * */
+
+    const { useState } = React;
+
+    // Zwróć uwagę na wykorzystanie destrukturyzacji props
+    // zamiast props.fullName piszemy: {fullName} w na liście argumentów i możemy korzystać z samego "fullName"
+    const Greetings = ({fullName}) => (
+        <div>
+            Hello {fullName} !
+        </div>
+    )
+
+
+    function App() {
+	    const [name, setName] = useState('World');
+	    return (
+		    <div>
+			    {/* Wykorzystaj komponent Greetings */}
+			    <button onClick={() => setName('Michał')}> Change Name</button>
+		    </div>
+	    )
+    }
+
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+</script>
+</body>
+</html>
