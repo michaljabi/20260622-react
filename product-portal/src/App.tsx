@@ -1,5 +1,4 @@
-import heroImg from "./assets/hero.png";
-import "./App.css";
+// import heroImg from "./assets/hero.png";
 
 function App() {
   console.log(3 + 90 + 2 * 4);
@@ -13,8 +12,9 @@ function App() {
           $ <span> {"hello" + "world"} </span>
         </span>
       </h1>
-      <img src={heroImg} />
+      {/* <img src={heroImg} /> */}
     </>
+    // <div></div>
   );
 }
 
