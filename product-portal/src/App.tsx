@@ -2,6 +2,7 @@
 // import { Sample } from "./common/Sample.tsx";
 // import { Sample as SampleAlias } from "./common/Sample.tsx";
 
+import { Store } from "lucide-react";
 import { Header } from "./common/Header.tsx";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="min-h-full">
       <Header itemsCount={90} />
+      <Header icon={<Store />} iconName="up" />
       {/* <Header title="Product Store"/>
       <Header title="Product Site"/> */}
       <main className="mx-auto max-w-5xl px-4 py-8">
