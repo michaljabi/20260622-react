@@ -21,7 +21,7 @@ export function Navbar() {
           </a>
         ))}
       </div>
-      <Button />
+      <Button onPress={() => console.log("HELLo")}>Hello</Button>
       {/* <Button>{9276}</Button>
 
       <Button>
