@@ -29,8 +29,10 @@ export function Navbar() {
       <div className="relative block md:hidden">
         {/* <Button onPress={() => setIsShown(!isShown)}> */}
         <Button onPress={() => setIsShown((v) => !v)}>
-          <Menu />
+          <Menu /> 
         </Button>
+        {/* Co renderuje się w JSX ? */}
+        {0}{null}{undefined}{true}{false}{NaN}
         {/* nasz dropdown: */}
         {isShown && (
           <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
