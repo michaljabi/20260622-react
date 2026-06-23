@@ -1,8 +1,8 @@
 import { productsResource } from "../products/products-resource";
+import { ProductCard } from "../products/ProductCard.tsx";
 
 export function Products() {
-
-  const products = productsResource.getAll()
+  const products = productsResource.getAll();
 
   console.log(products);
 
@@ -16,11 +16,11 @@ export function Products() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {/* tutaj będziemy wyświetlać produkty */}
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        {
+        products.map((p) => (
+          <ProductCard key={p.id} product={p} />
+        ))
+        }
       </div>
     </section>
   );
