@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="min-h-full">
-      <Header title="Product Portal" />
-      <Header title="Product Store"/>
-      <Header title="Product Site"/>
+      <Header itemsCount={90} />
+      {/* <Header title="Product Store"/>
+      <Header title="Product Site"/> */}
       <main className="mx-auto max-w-5xl px-4 py-8">
         <div> Strona... </div>
       </main>
