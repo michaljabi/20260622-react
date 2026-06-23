@@ -1,7 +1,4 @@
-type MenuItem = {
-  href: string;
-  text: string;
-};
+import type { MenuItem } from "./menu-item";
 
 export function Navbar() {
   const menuItems: MenuItem[] = [
