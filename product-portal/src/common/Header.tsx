@@ -6,6 +6,7 @@ Trick, żeby pozbyć się komunikatów o błędach jeśli nie użyjemy Zap!
 // eslint-disable-next-line
 */
 import { Zap, Menu, AArrowUp } from "lucide-react";
+import { Navbar } from "./Navbar.tsx";
 
 // Dobra praktyka w TS to pokazanie na górze komponentu jego wartości
 // WEJŚCOWYCH czyli props
@@ -40,6 +41,7 @@ export function Header({
         {title}
         {itemsCount ? "(" + itemsCount + ")" : ""}
       </span>
+      <Navbar />
     </header>
   );
 }
