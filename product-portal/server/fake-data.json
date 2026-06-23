@@ -1,0 +1,68 @@
+{
+  "products": [
+    {
+      "id": "RxzeB",
+      "name": "Wireless Headphones",
+      "description": "Over-ear, active noise cancelling, 30h battery.",
+      "category": "Audio",
+      "price": 199,
+      "imgUrl": "https://picsum.photos/id/452/600/800"
+    },
+    {
+      "id": "eMXsH",
+      "name": "Smart Watch",
+      "description": "Fitness tracking, heart rate, always-on display.",
+      "category": "Wearables",
+      "price": 149,
+      "imgUrl": "https://picsum.photos/id/175/600/800"
+    },
+    {
+      "id": "EUH4R",
+      "name": "Mechanical Keyboard",
+      "description": "Hot-swappable switches, RGB, compact 75% layout.",
+      "category": "Accessories",
+      "price": 89,
+      "imgUrl": "https://picsum.photos/id/486/600/800"
+    },
+    {
+      "id": "qoN8V",
+      "name": "Ergonomic Mouse",
+      "description": "Silent clicks, 4000 DPI, sculpted for comfort.",
+      "category": "Accessories",
+      "price": 49,
+      "imgUrl": "https://picsum.photos/id/366/600/800"
+    },
+    {
+      "id": "CHc1j",
+      "name": "Mirrorless Camera",
+      "description": "24MP sensor, 4K video, interchangeable lens.",
+      "category": "Photo",
+      "price": 899,
+      "imgUrl": "https://picsum.photos/id/250/600/800"
+    },
+    {
+      "id": "QCDvp",
+      "name": "Portable Speaker",
+      "description": "Waterproof, punchy bass, 20h playtime.",
+      "category": "Audio",
+      "price": 79,
+      "imgUrl": "https://picsum.photos/id/529/600/800"
+    },
+    {
+      "id": "4NnlR",
+      "name": "Game Console",
+      "description": "Next-gen graphics, lightning-fast SSD load times.",
+      "category": "Gaming",
+      "price": 499,
+      "imgUrl": "https://picsum.photos/id/96/600/800"
+    },
+    {
+      "id": "b6mln",
+      "name": "Smartphone",
+      "description": "6.5\" OLED, triple camera, all-day battery.",
+      "category": "Mobile",
+      "price": 799,
+      "imgUrl": "https://picsum.photos/id/160/600/800"
+    }
+  ]
+}

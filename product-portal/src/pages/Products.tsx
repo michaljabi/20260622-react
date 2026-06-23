@@ -1,4 +1,11 @@
+import { productsResource } from "../products/products-resource";
+
 export function Products() {
+
+  const products = productsResource.getAll()
+
+  console.log(products);
+
   return (
     <section>
       <div className="mb-6">
