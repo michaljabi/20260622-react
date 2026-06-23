@@ -11,7 +11,7 @@ export function Navbar() {
     { href: "/blog", text: "Blog" },
   ];
 
-  const [count, setCount] = useState(0); // tutaj potrzebujemy tzw. STANU ! (useState hook)
+  const [isShown, setIsShown] = useState(false); // tutaj potrzebujemy tzw. STANU ! (useState hook)
 
   return (
     <nav className="grow gap-2 text-base flex justify-between">
@@ -27,21 +27,26 @@ export function Navbar() {
         ))}
       </div>
       <div className="relative block md:hidden">
-        <Button onPress={() => setCount(count + 1)}>
-          <Menu /> {count}
+        {/* <Button onPress={() => setIsShown(!isShown)}> */}
+        <Button onPress={() => setIsShown((v) => !v)}>
+          <Menu />
         </Button>
         {/* nasz dropdown: */}
-        <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
-          {menuItems.map(({ href, text }) => (
-            <a
-              key={href}
-              href={href}
-              className="px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer"
-            >
-              {text}
-            </a>
-          ))}
-        </div>
+        {isShown ? (
+          <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
+            {menuItems.map(({ href, text }) => (
+              <a
+                key={href}
+                href={href}
+                className="px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer"
+              >
+                {text}
+              </a>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
       {/* zad. 13 kod... */}
 
