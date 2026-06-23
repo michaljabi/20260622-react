@@ -32,7 +32,7 @@ export function Navbar() {
           <Menu />
         </Button>
         {/* nasz dropdown: */}
-        {isShown ? (
+        {isShown && (
           <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
             {menuItems.map(({ href, text }) => (
               <a
@@ -44,8 +44,6 @@ export function Navbar() {
               </a>
             ))}
           </div>
-        ) : (
-          ""
         )}
       </div>
       {/* zad. 13 kod... */}
