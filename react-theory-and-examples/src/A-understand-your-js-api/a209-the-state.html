@@ -1,42 +1,82 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> The private State of the component </title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>The private State of the component</title>
 
-    <script crossorigin src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
-</head>
-<body>
+    <script
+      crossorigin
+      src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
 
-<div id="root"></div>
+    <script type="text/babel" data-type="module">
+      import React from "https://esm.sh/react@19";
+      import { createRoot } from "https://esm.sh/react-dom@19/client";
+      /**
+       * Sprawdź działanie przykładu w przeglądarce (live server).
+       *
+       * Cel:
+       * Wprowadzenie pojęcia stanu, jako sposobu modyfikacji komponentu w jego wnętrzu.
+       * Zauważenie, iż stan jes tylko do odczytu i jest możliwy do wykorzystania i aktualizacji tylko w obrębie
+       * komponentu, który go deklaruje.
+       *
+       * */
 
-<script type="text/babel" data-type="module">
-    import React from "https://esm.sh/react@19";
-    import { createRoot } from "https://esm.sh/react-dom@19/client";
-	/**
-     * Sprawdź działanie przykładu w przeglądarce (live server).
-     *
-	 * Cel:
-	 * Wprowadzenie pojęcia stanu, jako sposobu modyfikacji komponentu w jego wnętrzu.
-     * Zauważenie, iż stan jes tylko do odczytu i jest możliwy do wykorzystania i aktualizacji tylko w obrębie
-     * komponentu, który go deklaruje.
-     *
-	 * */
+      const { useState } = React;
 
-    const { useState } = React;
+      function App() {
+        const [count, setCount] = useState(0)
+        const [name, setName] = useState("Michał");
+        const [lastNames, setLastNames] = useState(["Nowak"]);
+        // const arr = useState('World');
+        //const name = arr[0];
+        //const setName = arr[1];
+        console.log("RE-RENDER!");
+        // setName('ENDLERS!!!')
+        return (
+          // <div>
+          //     <h1>Hello {arr[0]}</h1>
+          //     <button onClick={() => arr[1]('Michał')}> Change to Michał</button>
+          //     <button onClick={() => arr[1]('Kasia')}> Change to Kasia</button>
+          // </div>
+          <div>
+            <button onClick={
+                () => {
+                    // Tak się nie uda dodać + 2 !!!
+                    // setCount(count + 1);
+                    // setCount(count + 1);
 
-    function App() {
-		const [name, setName] = useState('World');
-	    return (
-		    <div>
-			    <h1>Hello {name}</h1>
-			    <button onClick={() => setName('Michał')}> Change the Title</button>
-		    </div>
-	    )
-    }
+                    // Dlatego trzeba to zrobić w formie "AKCJI"
+                    setCount(c => c + 1);
+                    setCount(c => c + 1);
+                }
+            }>{count}</button>
+            <h1>
+              Hello {name} {lastNames.join("_ __")}
+            </h1>
+            <button onClick={() => setName("Kasia")}> Change to Michał</button>
+            <button
+              onClick={() => {
+                // tak nie można jak masz obiekt!!!
+                // lastNames.push('Kowalski');
+                // setLastNames(lastNames)
 
-    const root = createRoot(document.getElementById('root'));
-    root.render(<App />);
-</script>
-</body>
+                // trzeba ZAWSZE kopię obiektu:
+                setLastNames([...lastNames, "Kowalski"]);
+              }}
+            >
+              {" "}
+              Dodaj nazwisko{" "}
+            </button>
+          </div>
+        );
+      }
+
+      const root = createRoot(document.getElementById("root"));
+      root.render(<App />);
+    </script>
+  </body>
 </html>
