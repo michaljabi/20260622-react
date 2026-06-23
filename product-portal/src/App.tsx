@@ -4,6 +4,7 @@
 
 // import { Store } from "lucide-react";
 import { Header } from "./common/Header.tsx";
+import { Products } from "./pages/Products.tsx";
 
 function App() {
   console.log(3 + 90 + 2 * 4);
@@ -17,7 +18,7 @@ function App() {
       {/* <Header title="Product Store"/>
       <Header title="Product Site"/> */}
       <main className="mx-auto max-w-5xl px-4 py-8">
-        <div> Strona... </div>
+        <Products />
       </main>
     </div>
   );
