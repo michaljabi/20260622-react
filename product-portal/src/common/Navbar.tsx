@@ -1,4 +1,5 @@
 import type { MenuItem } from "./menu-item";
+import { Button } from "../shared/Button.tsx";
 
 export function Navbar() {
   const menuItems: MenuItem[] = [
@@ -20,6 +21,12 @@ export function Navbar() {
           </a>
         ))}
       </div>
+      <Button />
+      {/* <Button>{9276}</Button>
+
+      <Button>
+        <span style={{ color: "red" }}> hell</span>oo!
+      </Button> */}
     </nav>
   );
 }
