@@ -2,6 +2,8 @@
 // import { Sample } from "./common/Sample.tsx";
 // import { Sample as SampleAlias } from "./common/Sample.tsx";
 
+import { Header } from "./common/Header.tsx";
+
 function App() {
   console.log(3 + 90 + 2 * 4);
 
@@ -9,7 +11,9 @@ function App() {
 
   return (
     <div className="min-h-full">
-      <nav className="bg-indigo-400 p-2"> MenuBar </nav>
+      <Header title="Product Portal" />
+      <Header title="Product Store"/>
+      <Header title="Product Site"/>
       <main className="mx-auto max-w-5xl px-4 py-8">
         <div> Strona... </div>
       </main>
