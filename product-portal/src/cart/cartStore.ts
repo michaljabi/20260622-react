@@ -27,7 +27,10 @@ export const useCartStore = create<CartState>()(
         }
         return { ...state, items: items.map((item) => {
             if(item.id === product.id) {
-              return {...product, quantity: item.quantity + 1}
+              const itemClone = structuredClone(item);
+              itemClone.quantity++;
+              return itemClone;
+              // return {...product, quantity: item.quantity + 1}
             }
             return item
         }) }
