@@ -20,9 +20,18 @@
 
       // STORE - stan + akcje trzymane razem (brak osobnego reducera/akcji)
       const counterStore = createStore((set) => ({
+
+        // QUERY:
         value: 1,
+        
+        /// COMANDS:
         increase: () => set((state) => ({ value: state.value + 1 })),
         decrease: () => set((state) => ({ value: state.value - 1 })),
+
+        increaseBy: (byNo) => set((state) => {
+          console.log(state)
+          return { value: state.value + byNo }
+        })
       }));
 
       // BINDINGS:
@@ -31,13 +40,14 @@
       const $display = document.querySelector(".display");
 
       $btnIncrease.addEventListener("click", () =>
-        counterStore.getState().increase(),
+        counterStore.getState().increaseBy(10),
       );
       $btnDecrease.addEventListener("click", () =>
         counterStore.getState().decrease(),
       );
 
       counterStore.subscribe(() => {
+        console.log('UPDATE store !')
         $display.textContent = counterStore.getState().value;
       });
     </script>

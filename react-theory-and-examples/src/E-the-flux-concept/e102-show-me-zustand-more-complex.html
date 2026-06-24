@@ -1,40 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Zustand bit complex</title>
-</head>
-<body>
-
-    <main id="root">
-
-    </main>
+  </head>
+  <body>
+    <main id="root"></main>
 
     <script type="module">
-        import { createStore } from 'https://esm.sh/zustand/vanilla'
+      import { createStore } from "https://esm.sh/zustand/vanilla";
 
-        // STORE - stan początkowy + akcje w jednym miejscu.
-        // Akcja sama opisuje "jak" zmienić stan (zamiast type + reducer).
-        const ordersStore = createStore((set) => ({
-            items: ['cola'],
-            addNewOrder: (order) => set((state) => ({
-                items: [...state.items, order]
-            })),
-        }))
+      // STORE - stan początkowy + akcje w jednym miejscu.
+      // Akcja sama opisuje "jak" zmienić stan (zamiast type + reducer).
+      const ordersStore = createStore((set) => ({
+        items: ["cola"],
+        addNewOrder: (order) =>
+          set((state) => ({
+            items: [...state.items, order],
+          })),
+      }));
 
-        // Selektor - zwykła funkcja wyciągająca część stanu (jak w Redux).
-        const selectAllOrders = (state) => state.items
+      // Selektor - zwykła funkcja wyciągająca część stanu (jak w Redux).
+      const selectAllOrders = (state) => state.items;
+      const selectNumberOfOrders = (state) => state.items.length
 
-        // CONSUMER - odbiorca naszej logiki:
-        ordersStore.subscribe(() => {
-            console.log(ordersStore.getState());
-            document.body.innerHTML = selectAllOrders(ordersStore.getState()).join(' ___ ')
-        })
+      // CONSUMER - odbiorca naszej logiki:
+      ordersStore.subscribe(() => {
+        console.log(ordersStore.getState());
+        document.body.innerHTML = selectAllOrders(ordersStore.getState()).join(
+          " __%_ ",
+        );
 
-        // ACTIONS - Zmiana stanu (wywołanie akcji ze store).
-        ordersStore.getState().addNewOrder('pizza');
-        ordersStore.getState().addNewOrder('pasta');
-        ordersStore.getState().addNewOrder('chicken');
+        console.log('Number of items', selectNumberOfOrders(ordersStore.getState()))
+      });
+
+      // ACTIONS - Zmiana stanu (wywołanie akcji ze store).
+      ordersStore.getState().addNewOrder("pizza");
+      ordersStore.getState().addNewOrder("pizza2");
+      // ordersStore.getState().addNewOrder("pasta");
+      //ordersStore.getState().addNewOrder("chicken");
     </script>
-</body>
+  </body>
 </html>
