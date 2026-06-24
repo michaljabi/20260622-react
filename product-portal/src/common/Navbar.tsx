@@ -1,4 +1,5 @@
 import { Menu } from "lucide-react";
+import { NavLink } from "react-router"
 
 import type { MenuItem } from "./menu-item";
 import { Button } from "../shared/Button.tsx";
@@ -17,13 +18,13 @@ export function Navbar() {
     <nav className="grow gap-2 text-base flex justify-between">
       <div className="relative hidden md:flex top-3 md:top-6">
         {menuItems.map(({ href, text }) => (
-          <a
+          <NavLink
             key={href}
-            href={href}
-            className="px-3 py-1 rounded-t-xl hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer active:font-bold"
+            to={href}
+            className={({isActive}) => `px-3 py-1 rounded-t-xl hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer active:font-bold ${isActive ? "font-bold dark:bg-slate-800 bg-slate-300" : ""}`}
           >
             {text}
-          </a>
+          </NavLink>
         ))}
       </div>
       <div className="relative block md:hidden">
@@ -37,13 +38,14 @@ export function Navbar() {
         {isShown && (
           <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
             {menuItems.map(({ href, text }) => (
-              <a
+              <NavLink
                 key={href}
-                href={href}
-                className="px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer"
+                to={href}
+                onClick={() => setIsShown(false)}
+                className={({ isActive }) => `px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer ${isActive ? 'dark:bg-slate-800 bg-slate-300' : ''}`}
               >
                 {text}
-              </a>
+              </NavLink>
             ))}
           </div>
         )}
