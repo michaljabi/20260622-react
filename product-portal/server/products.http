@@ -1,0 +1,23 @@
+### All products call
+GET http://localhost:3000/products
+
+### One product call
+GET http://localhost:3000/products/Gr9BESdvzsQ
+
+### Add one product
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "name": "Laptop",
+    "description": "Good as brand new one...",
+    "category": "Gaming",
+    "price": 400,
+    "imgUrl": "https://picsum.photos/id/2/600/800"
+}
+
+### SEE all sellers
+GET http://localhost:3000/sellers
+
+### See one Seller
+GET http://localhost:3000/sellers/7ydg

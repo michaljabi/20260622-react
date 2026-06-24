@@ -10,9 +10,11 @@
     "preview": "vite preview",
     "echo:namez": "echo Michał",
     "genuid": "nanoid -s 5",
-    "format": "prettier ./src --write"
+    "format": "prettier ./src --write",
+    "backend": "json-server ./server/fake-data.json"
   },
   "dependencies": {
+    "axios": "^1.18.1",
     "lucide-react": "^1.21.0",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
@@ -29,6 +31,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "json-server": "^1.0.0-beta.15",
     "prettier": "^3.8.4",
     "tailwindcss": "^4.3.1",
     "typescript": "~6.0.2",
