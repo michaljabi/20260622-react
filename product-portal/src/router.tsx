@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router";
 import App from "./App.tsx";
 import { Products } from "./pages/Products.tsx";
 import { TopSellers } from "./pages/TopSellers.tsx";
+import { NotFound404 } from "./pages/NotFound404.tsx";
+
+// const NotFoundPage = () => <div>Page not found :( </div>
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +15,7 @@ export const router = createBrowserRouter([
       { path: "top-sellers", Component: TopSellers },
       //   { path: "hello", Component: () => "HELLO" },
       //   { path: "hello", Component: () => "HELLO2" },
-      { path: "*", Component: () => <div>Page not found :( </div> },
+      { path: "*", Component: NotFound404 },
     ],
   },
 ]);
