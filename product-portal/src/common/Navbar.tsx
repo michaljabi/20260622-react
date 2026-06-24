@@ -4,6 +4,7 @@ import { NavLink, useNavigate } from "react-router";
 import type { MenuItem } from "./menu-item";
 import { Button } from "../shared/Button.tsx";
 import { useState } from "react";
+import { selectTotalItems, useCartStore } from "../cart/cartStore.ts";
 
 export function Navbar() {
   const menuItems: MenuItem[] = [
@@ -12,7 +13,8 @@ export function Navbar() {
     { href: "/add-product", text: "Add" },
   ];
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const totalCartItems = useCartStore(selectTotalItems);
   const [isShown, setIsShown] = useState(false); // tutaj potrzebujemy tzw. STANU ! (useState hook)
 
   return (
@@ -73,9 +75,9 @@ export function Navbar() {
         <span style={{ color: "red" }}> hell</span>oo!
       </Button> */}
       <div className="flex gap-2 text-sm">
-        <Button onPress={() => navigate('/cart')}>
+        <Button onPress={() => navigate("/cart")}>
           <div className="flex items-center gap-1">
-            <ShoppingCart /> ({0})
+            <ShoppingCart /> ({totalCartItems})
           </div>
         </Button>
       </div>

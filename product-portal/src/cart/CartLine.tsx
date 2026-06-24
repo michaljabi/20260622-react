@@ -1,12 +1,16 @@
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "../shared/Button";
 import type { CartItem } from "./cart-item";
+import { useCartStore } from "./cartStore";
 
 interface CartLineProps {
   item: CartItem;
 }
 
 export function CartLine({ item }: CartLineProps) {
+
+  const cartStore = useCartStore();
+
   return (
     <div className="flex items-center gap-4 py-4">
       <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800">
@@ -36,7 +40,7 @@ export function CartLine({ item }: CartLineProps) {
         ${item.price * item.quantity}
       </span>
 
-      <Button>
+      <Button onPress={() => cartStore.remove(item.id)}>
         <Trash2 size={16} />
       </Button>
     </div>

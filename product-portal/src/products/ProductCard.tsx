@@ -1,5 +1,6 @@
 import type { Product } from "./product";
 import { Button } from "../shared/Button.tsx";
+import { useCartStore } from "../cart/cartStore.ts";
 // import { Cart } from 'lucide-react'
 
 type ProductProps = {
@@ -7,6 +8,9 @@ type ProductProps = {
 };
 
 export function ProductCard({ product }: ProductProps) {
+
+  const cartStore = useCartStore()
+
   return (
     <article className="group flex flex-col overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-zinc-800 dark:bg-zinc-900">
       <div className="aspect-4/3 overflow-hidden bg-zinc-100 dark:bg-zinc-800">
@@ -29,7 +33,7 @@ export function ProductCard({ product }: ProductProps) {
 
         <div className="mt-auto flex items-center justify-between gap-2 pt-2">
           <span className="text-lg font-semibold">${product.price}</span>
-          <Button onPress={() => console.log(product)}>Add</Button>
+          <Button onPress={() => cartStore.add(product)}>Add</Button>
         </div>
       </div>
     </article>

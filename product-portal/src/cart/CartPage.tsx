@@ -3,21 +3,13 @@ import { ArrowLeft, ShoppingCart, Trash2 } from "lucide-react";
 import { CartLine } from "./CartLine.tsx";
 import { Button } from "../shared/Button.tsx";
 import type { CartItem } from "./cart-item.ts";
+import { useCartStore, selectItems, selectTotalPrice, selectTotalItems } from "./cartStore.ts";
 
 export function CartPage() {
-  const items: CartItem[] = [
-    {
-      id: "RxzeB",
-      name: "Wireless Headphones",
-      description: "Over-ear, active noise cancelling, 30h battery.",
-      category: "Audio",
-      price: 199,
-      imgUrl: "https://picsum.photos/id/452/600/800",
-      quantity: 12,
-    },
-  ];
-  const totalItems = 0;
-  const totalPrice = 0;
+  const cartStore = useCartStore();
+  const items: CartItem[] = useCartStore(selectItems);
+  const totalItems = useCartStore(selectTotalItems);
+  const totalPrice = useCartStore(selectTotalPrice);
 
   if (items.length === 0) {
     return (
@@ -46,7 +38,7 @@ export function CartPage() {
     <section>
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Your Cart</h1>
-        <Button>
+        <Button onPress={cartStore.clear}>
           <div className="flex items-center gap-2">
             <Trash2 size={16} /> Clear cart
           </div>

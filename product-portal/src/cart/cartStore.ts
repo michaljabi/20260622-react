@@ -11,24 +11,34 @@ interface CartState {
   clear: () => void;
 }
 
+// SINGLE SOURCE OF TRUTH about CART state.
+
 export const useCartStore = create<CartState>()(
   devtools((set) => ({
     items: [],
-    add: (product) =>
+    add: (product: Product) =>
       set((state) => {
         console.log(product);
         console.log(state);
-        return { items: [] };
+        const { items } = state;
+        const idx = items.findIndex(({id}) => id === product.id)
+        if(idx === -1) {
+          return { ...state, items: [...state.items, { ...product, quantity: 1 }]}
+        }
+        return { ...state, items: items.map((item) => {
+            if(item.id === product.id) {
+              return {...product, quantity: item.quantity + 1}
+            }
+            return item
+        }) }
       }),
-    remove: (id) => {
-        console.log(id);
-    },
-    clear: () => {},
+    remove: (itemId: CartItem['id']) => set((state) => ({ ...state, items: state.items.filter(({id}) => id !== itemId)})),
+    clear: () => set(() => ({ items: []})),
   })),
 );
 
 // Selektory stanu "derived "
 export const selectItems = (state: CartState) => state.items;
 
-export const selectTotalItems = (state: CartState) => 0;
-export const selectTotalPrice = (state: CartState) => 0;
+export const selectTotalItems = (state: CartState) => state.items.reduce((total, { quantity }) => total + quantity, 0);
+export const selectTotalPrice = (state: CartState) => state.items.reduce((total, { quantity, price }) => total + quantity * price, 0);
