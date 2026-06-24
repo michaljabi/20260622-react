@@ -5,7 +5,7 @@ import type { CartItem } from "./cart-item";
 
 interface CartState {
   items: CartItem[];
-  
+
   add: (product: Product) => void;
   remove: (id: Product["id"]) => void;
   clear: () => void;
@@ -28,6 +28,7 @@ export const useCartStore = create<CartState>()(
 );
 
 // Selektory stanu "derived "
-export const selectTotalItems = (state: CartState) => 0;
+export const selectItems = (state: CartState) => state.items;
 
+export const selectTotalItems = (state: CartState) => 0;
 export const selectTotalPrice = (state: CartState) => 0;

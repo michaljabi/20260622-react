@@ -1,5 +1,5 @@
-import { Menu } from "lucide-react";
-import { NavLink } from "react-router"
+import { Menu, ShoppingCart } from "lucide-react";
+import { NavLink, useNavigate } from "react-router";
 
 import type { MenuItem } from "./menu-item";
 import { Button } from "../shared/Button.tsx";
@@ -12,6 +12,7 @@ export function Navbar() {
     { href: "/add-product", text: "Add" },
   ];
 
+  const navigate = useNavigate()
   const [isShown, setIsShown] = useState(false); // tutaj potrzebujemy tzw. STANU ! (useState hook)
 
   return (
@@ -21,7 +22,9 @@ export function Navbar() {
           <NavLink
             key={href}
             to={href}
-            className={({isActive}) => `px-3 py-1 rounded-t-xl hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer active:font-bold ${isActive ? "font-bold dark:bg-slate-800 bg-slate-300" : ""}`}
+            className={({ isActive }) =>
+              `px-3 py-1 rounded-t-xl hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer active:font-bold ${isActive ? "font-bold dark:bg-slate-800 bg-slate-300" : ""}`
+            }
           >
             {text}
           </NavLink>
@@ -30,10 +33,15 @@ export function Navbar() {
       <div className="relative block md:hidden">
         {/* <Button onPress={() => setIsShown(!isShown)}> */}
         <Button onPress={() => setIsShown((v) => !v)}>
-          <Menu /> 
+          <Menu />
         </Button>
         {/* Co renderuje się w JSX ? */}
-        {0}{null}{undefined}{true}{false}{NaN}
+        {0}
+        {null}
+        {undefined}
+        {true}
+        {false}
+        {NaN}
         {/* nasz dropdown: */}
         {isShown && (
           <div className="absolute left-0 top-full mt-2 flex flex-col gap-1 p-2 rounded border border-slate-400 bg-white dark:bg-slate-950 dark:border-slate-600 z-10">
@@ -42,7 +50,9 @@ export function Navbar() {
                 key={href}
                 to={href}
                 onClick={() => setIsShown(false)}
-                className={({ isActive }) => `px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer ${isActive ? 'dark:bg-slate-800 bg-slate-300' : ''}`}
+                className={({ isActive }) =>
+                  `px-3 py-1 text-left rounded whitespace-nowrap hover:dark:bg-slate-700 hover:bg-slate-200 cursor-pointer ${isActive ? "dark:bg-slate-800 bg-slate-300" : ""}`
+                }
               >
                 {text}
               </NavLink>
@@ -62,6 +72,13 @@ export function Navbar() {
       <Button>
         <span style={{ color: "red" }}> hell</span>oo!
       </Button> */}
+      <div className="flex gap-2 text-sm">
+        <Button onPress={() => navigate('/cart')}>
+          <div className="flex items-center gap-1">
+            <ShoppingCart /> ({0})
+          </div>
+        </Button>
+      </div>
     </nav>
   );
 }
