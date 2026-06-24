@@ -1,18 +1,23 @@
 import { productsResource } from "../products/products-resource";
 import { ProductCard } from "../products/ProductCard.tsx";
 import type { Product } from "../products/product.ts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export function Products() {
   const [products, setProducts] = useState<Product[]>([]);
 
-  productsResource
-    .getAll()
-    .then((value) => {
-      setProducts(value);
-      // console.log(value);
-    })
-    .catch((err) => console.error(err));
+  useEffect(() => {
+    console.log("Pierwszy render");
+
+    productsResource
+      .getAll()
+      .then((value) => setProducts(value))
+      .catch((err) => console.error(err));
+
+    return () => {
+      console.log("Po ostatnim renderze, komponent usunięty");
+    };
+  }, []);
 
   return (
     <section>
