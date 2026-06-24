@@ -1,14 +1,18 @@
-import data from '../../server/fake-data.json'
 import type { Product } from './product'
+import { httpClient } from "../shared/http-client";
 
-// const endpointURL = 'http://localhost:3000/products'
+const endpointURL = '/products'
 
 export const productsResource = {
-    getAll(): Product[] {
+    async getAll(): Promise<Product[]> {
         // Ajax call docelowo - po wszystkie proukty
-        return data.products
+        return httpClient.get(endpointURL)
     },
-    // getOne(id: Product['id']) {
-        // ajax call docelowo po jeden produkt!
-    //}
+    // inne metody
+    async getOne(id: Product['id']): Promise<Product>  {
+        return httpClient.get(`${endpointURL}/${id}`)
+    },
+    async addOne(product: Omit<Product, 'id'>): Promise<Product> {
+        return httpClient.post(endpointURL, product)
+    }
 }

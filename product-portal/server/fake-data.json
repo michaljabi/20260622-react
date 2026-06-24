@@ -71,10 +71,21 @@
       "price": 400,
       "imgUrl": "https://picsum.photos/id/2/600/800",
       "id": "Gr9BESdvzsQ"
+    },
+    {
+      "name": "Laptop",
+      "description": "Good as brand new one...",
+      "category": "Gaming",
+      "price": 400,
+      "imgUrl": "https://picsum.photos/id/2/600/800",
+      "id": "6a385mOlU1I"
     }
   ],
   "sellers": [
-    { "id": "7ydg", "name": "Allegrowicz" }
+    {
+      "id": "7ydg",
+      "name": "Allegrowicz"
+    }
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }

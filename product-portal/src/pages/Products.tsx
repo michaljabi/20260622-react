@@ -1,10 +1,18 @@
 import { productsResource } from "../products/products-resource";
 import { ProductCard } from "../products/ProductCard.tsx";
+import type { Product } from "../products/product.ts";
+import { useState } from "react";
 
 export function Products() {
-  const products = productsResource.getAll();
+  const [products, setProducts] = useState<Product[]>([]);
 
-  console.log(products);
+  productsResource
+    .getAll()
+    .then((value) => {
+      setProducts(value);
+      // console.log(value);
+    })
+    .catch((err) => console.error(err));
 
   return (
     <section>
@@ -16,11 +24,9 @@ export function Products() {
       </div>
 
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {
-        products.map((p) => (
+        {products.map((p) => (
           <ProductCard key={p.id} product={p} />
-        ))
-        }
+        ))}
       </div>
     </section>
   );
