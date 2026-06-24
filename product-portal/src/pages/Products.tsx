@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 export function Products() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [errorMessage, setErrorMessage] = useState('')
 
   useEffect(() => {
     console.log("Pierwszy render");
@@ -19,10 +20,20 @@ export function Products() {
     };
   }, []);
 
+  // A co jak ja chcę mieć info o każdym re-render ?
+  useEffect(() => {
+    console.log('Jest re-render')
+  })
+
+  // A co jak ja chę mieć info o tym że zmieni się errorMessage ?
+  useEffect(() => {
+    console.log('Zmieniło się error message!', errorMessage)
+  }, [errorMessage])
+
   return (
     <section>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Products</h1>
+        <h1 className="text-2xl font-bold" onClick={() => setErrorMessage('BOOM !')}>Products</h1>
         <p className="text-sm text-zinc-500">
           Pick something nice and add it to your cart.
         </p>
