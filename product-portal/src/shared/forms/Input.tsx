@@ -20,9 +20,10 @@ export function Input({
   hasError,
   error,
   className,
+  // przekazuje wszystkie pozostałe klasyczne "attributes" dla `input` natywnego HTML
   ...props
 }: InputProps) {
-  const isError = hasError || !!error;
+  const isError = hasError || Boolean(error);
 
   return (
     <label className="flex flex-col gap-1 text-sm">

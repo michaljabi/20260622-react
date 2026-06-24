@@ -79,6 +79,14 @@
       "price": 400,
       "imgUrl": "https://picsum.photos/id/2/600/800",
       "id": "6a385mOlU1I"
+    },
+    {
+      "name": "Hello world",
+      "category": "Audio",
+      "description": "hello audio",
+      "price": 6,
+      "imgUrl": "https://picsum.photos/id/17/600/800",
+      "id": "mwBPabcUMq0"
     }
   ],
   "sellers": [
