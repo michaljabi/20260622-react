@@ -9,7 +9,7 @@ export function Navbar() {
   const menuItems: MenuItem[] = [
     { href: "/", text: "Products" },
     { href: "/top-sellers", text: "Top sellers" },
-    { href: "/blog", text: "Blog" },
+    { href: "/add-product", text: "Add" },
   ];
 
   const [isShown, setIsShown] = useState(false); // tutaj potrzebujemy tzw. STANU ! (useState hook)
